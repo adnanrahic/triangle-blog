@@ -1,0 +1,27 @@
+<div class="container" ng-controller="registerController">
+    <div class="col-md-12">   
+        <div class="contact-form bottom">
+            <h2>Register</h2>
+            <form id="" name="register-form">
+                <div class="form-group">
+                    <input type="text" name="name" ng-model="user.username" class="form-control" required="required" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" ng-model="user.email" class="form-control" required="required" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" ng-model="user.password" class="form-control" required="required" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="confirmPassword" ng-model="confirmPassword" class="form-control" required="required" placeholder="Confirm Password">
+                </div>                       
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-submit" value="Sign Up" ng-click="register();">
+                </div>
+                <div class="form-group">
+                    <p ng-show="passwordsNotMatching">Passwords are not matching!</p>
+                </div>
+            </form>
+        </div>   
+    </div>
+</div>

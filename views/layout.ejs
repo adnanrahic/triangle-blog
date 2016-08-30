@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/animate.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/lightbox.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/prettyPhoto.css">
+    <link rel="stylesheet" href="/styles/responsive.css">
+    <!--STYLES END-->
+  </head>
+
+  <body ng-app="app">
+    <header id="header">      
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 overflow">
+                    <div class="social-icons pull-right">
+                        <ul class="nav nav-pills">
+                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div> 
+                </div>
+                </div>
+        </div>
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="/">
+                        <h1><img src="/images/logo.png" alt="logo"></h1>
+                    </a>
+                    
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="<%= (req.path == '/blog') ? 'active' : '' %>"><a href="/blog">Blog</a></li>
+                        <li class="<%= (req.path == '/portfolio') ? 'active' : '' %>"><a href="/portfolio">Portfolio</a></li>
+                        <li class="<%= (req.path == '/forum') ? 'active' : '' %>"><a href="/forum">Forum</a></li>
+                        <li class="<%= (req.path == '/about') ? 'active' : '' %>"><a href="/about">About</a></li>
+                        <li class="<%= (req.path == '/contact') ? 'active' : '' %>"><a href="/contact">Contact</a></li>  
+                        
+                        <% if(!session.authenticated){ %>                  
+                        <li class="<%= (req.path == '/login') ? 'active' : '' %>"><a href="/login">Login</a></li>                    
+                        <li class="<%= (req.path == '/register') ? 'active' : '' %>"><a href="/register">Register</a></li>
+                        <% } %>
+
+                        <% if(session.authenticated){ %>                  
+                        <li class="dropdown"><a href="#"> <%- session.User.username %> <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="/profile">Profile</a></li>
+                                <li><a href="/api/logout">Logout</a></li>
+                            </ul>
+                        </li>   
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="search">
+                    <form role="form">
+                        <i class="fa fa-search"></i>
+                        <div class="field-toggle">
+                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/#header-->
+    
+
+    <!-- BODY -->
+
+    <%- body %>
+
+    <!-- BODY END -->
+
+
+
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <img src="images/home/under.png" class="img-responsive inline" alt="">
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="testimonial bottom">
+                        <h2>Testimonial</h2>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="#"><img src="images/home/profile1.png" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                                <blockquote>Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.</blockquote>
+                                <h3><a href="#">- Jhon Kalis</a></h3>
+                            </div>
+                         </div>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="#"><img src="images/home/profile2.png" alt=""></a>
+                            </div>
+                            <div class="media-body">
+                                <blockquote>Capicola nisi flank sed minim sunt aliqua rump pancetta leberkas venison eiusmod.</blockquote>
+                                <h3><a href="">- Abraham Josef</a></h3>
+                            </div>
+                        </div>   
+                    </div> 
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-info bottom">
+                        <h2>Contacts</h2>
+                        <address>
+                        E-mail: <a href="mailto:someone@example.com">email@email.com</a> <br> 
+                        Phone: +1 (123) 456 7890 <br> 
+                        Fax: +1 (123) 456 7891 <br> 
+                        </address>
+
+                        <h2>Address</h2>
+                        <address>
+                        Unit C2, St.Vincent's Trading Est., <br> 
+                        Feeder Road, <br> 
+                        Bristol, BS2 0UY <br> 
+                        United Kingdom <br> 
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="contact-form bottom">
+                        <h2>Send a message</h2>
+                        <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" required="required" placeholder="Email Id">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your text here"></textarea>
+                            </div>                        
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="copyright-text text-center">
+                        <p>&copy; Your Company 2014. All Rights Reserved.</p>
+                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+
+
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/templates` folder, then
+        include them here automatically (between TEMPLATES and TEMPLATES END).
+
+        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different template engine (handlebars, jade, dust, etc.)
+            + Internationalize your client-side templates using a server-side
+              stringfile before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+      By default, files in your `assets/js` folder are included here
+      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+      and concatenated into a single file.
+
+      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+      For example, here are a few things you could do:
+
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/jquery.js"></script>
+    <script src="/js/audio.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/coundown-timer.js"></script>
+    <script src="/js/gmaps.js"></script>
+    <script src="/js/holder.js"></script>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/jquery.countTo.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.isotope.min.js"></script>
+    <script src="/js/lightbox.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/masonry.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <!--SCRIPTS END-->
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+    <script type="text/javascript">
+
+        var app = angular.module('app',[]);
+        var root = 'http://localhost:1337/'; 
+        var api = 'http://localhost:1337/api';
+
+        app.controller('registerController', ['$scope', '$http', function($scope, $http){
+
+            $scope.user = {};
+            $scope.confirmPassword;
+            $scope.passwordsNotMatching = false;
+
+            $scope.register = function() {
+                if($scope.user.password === $scope.confirmPassword){
+                    $http.post(api + '/users', $scope.user).then(function(res){
+                        var user = {};
+                        user.email = $scope.user.email;
+                        user.password = $scope.user.password;
+                        $http.post(api + '/login', user).then(function(res){
+                            console.log(res.data);
+                            console.log("New user created and logged in!");                            
+                            window.location = root;
+                        }); 
+                    });
+                } else {
+                    $scope.passwordsNotMatching = true;
+                }
+                
+            };
+        }]);
+
+        app.controller('loginController', ['$scope', '$http', function($scope, $http){
+
+            $scope.user = {};
+
+            $scope.login = function() {
+                $http.post(api + '/login', $scope.user).then(function(res){
+                    console.log(res.data);
+                    window.location = root;
+                });                
+            };
+
+        }]);
+
+        app.controller('homeController', ['$scope', '$http', function($scope, $http){
+
+            $http.get(api + '/session').then(function(res){
+                console.log(res.data);
+            });                
+
+        }]);
+
+
+        app.controller('forumController', ['$scope', '$http', function($scope, $http){
+
+            $scope.forum = [];
+            $scope.user = {};
+            $scope.message = "";
+
+            // check for connection
+            io.socket.on('connected', function(obj){
+                console.log(obj.message);
+            });
+
+            // get the logged user
+            $http.get('/api/session').then(function(res) {
+                $scope.user = res.data.User;
+            });
+
+            // getting done on backend
+            io.socket.get('/api/forum/initForum');
+            io.socket.on('getForum', function(forum){
+                $scope.forum = forum;
+                console.log(forum);
+                $scope.$apply();
+            });
+
+            io.socket.on('forum',function(obj){
+                //Check whether the verb is created or not
+                if(obj.verb === 'created'){
+                    $scope.forum.push(obj.data);
+                    // Add the data to current chatList
+                    // Call $scope.$digest to make the changes in UI
+                    $scope.$apply();
+                }
+            });
+
+            io.socket.on('updateUser',function(obj){
+                $scope.forum.forEach(function(entry){
+
+                    if(entry.user != null) {
+
+                        if(entry.user.id == obj.id) {
+                            entry.user.online = obj.online;
+                            io.socket.put('/api/forum/putForumEntry/' + entry.id, entry, function(res) {
+                                console.log(res);
+                            });
+                        }
+
+                    }
+
+                    
+                }, this);
+
+
+                $scope.$apply();                                
+            });
+
+
+            // io.socket.on('user',function(obj){
+            //     if(obj.verb == 'updated'){
+            //         $scope.forum.forEach(function(entry){
+
+            //             if(entry.user != null) {
+
+            //                 if(entry.user.id == obj.id) {
+            //                     entry.user.online = obj.online;
+            //                 }
+
+            //             }
+
+                        
+            //         }, this);
+
+                    
+            //         $scope.$apply();  
+            //     }                              
+            // });
+
+            $scope.sendMsg = function(){
+                io.socket.post('/api/forum/postToForum',{user:$scope.user,message: $scope.message});
+                $scope.message = "";
+            };
+
+        }]);
+
+
+        app.controller('blogController', ['$scope', '$http', function($scope, $http){
+            io.socket.on('connected', function(obj){
+                console.log(obj.message);
+            });
+
+            // console.log($routeParams);
+
+            // $scope.blog = {};
+            // io.socket.get('/api/blog/initBlog/' + $routeParams.id);
+            // io.socket.on('getBlog', function(blog){
+            //     $scope.blog = blog;
+            //     console.log(blog);
+            //     $scope.$apply();
+            // });
+
+        }]);
+
+        
+
+
+	</script>
+
+  </body>
+</html>
