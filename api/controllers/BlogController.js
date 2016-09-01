@@ -29,7 +29,8 @@ module.exports = {
                     return res.view('blog-details',{
                         image: blog.image,
                         content: blog.content,
-                        postedBy: user
+                        postedBy: user,
+                        id: blog.id
                     });
                 });
             });

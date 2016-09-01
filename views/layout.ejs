@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
+    <title><%=typeof metaTitle == 'undefined' ? 'Triangle Blog' : metaTitle%></title>
+    <meta name="description" content="<%=typeof metaDescription == 'undefined' ? 'Triangle Blog' : metaDescription%>">
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -405,19 +406,23 @@
 
 
         app.controller('blogController', ['$scope', '$http', function($scope, $http){
+
+            $scope.obj = {};
+
+            console.log($scope.obj);
+            console.log($scope.id);
+
             io.socket.on('connected', function(obj){
                 console.log(obj.message);
             });
 
-            // console.log($routeParams);
-
-            // $scope.blog = {};
-            // io.socket.get('/api/blog/initBlog/' + $routeParams.id);
-            // io.socket.on('getBlog', function(blog){
-            //     $scope.blog = blog;
-            //     console.log(blog);
-            //     $scope.$apply();
-            // });
+            $scope.blog = {};
+            io.socket.get('/api/blog/initBlog/' + $scope.id);
+            io.socket.on('getBlogById', function(blog){
+                $scope.blog = blog;
+                console.log(blog);
+                $scope.$apply();
+            });
 
         }]);
 

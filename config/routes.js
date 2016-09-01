@@ -33,13 +33,25 @@ module.exports.routes = {
   ***************************************************************************/
   /// ROUTER
   '/': {
-    view: 'homepage'
+    view: 'homepage',
+    locals: {
+      metaTitle: "Welcome to Triangle Blog",
+      metaDescription: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem"
+    }
   },
   '/about': {
-    view: 'aboutus'
+    view: 'aboutus',
+    locals: {
+      metaTitle: "Triangle Blog | About",
+      metaDescription: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem"
+    }
   },
   '/blog': {
-    view: 'blog'
+    view: 'blog',
+    locals: {
+      metaTitle: "Triangle Blog",
+      metaDescription: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem"
+    }
   },
   'get /blog/:id': {
     // view: 'blog-details',
@@ -48,24 +60,44 @@ module.exports.routes = {
   },
   'get /forum': {
     view: 'forum',
+    locals: {
+      metaTitle: "Triangle Blog | Forum",
+      metaDescription: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem"
+    }
     // controller: 'MainController',
     // action: 'forum'
   },
   '/contact': {
-    view: 'contact'
+    view: 'contact',
+    locals: {
+      metaTitle: "Triangle Blog | Contact",
+      metaDescription: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem"
+    }
   },
   '/portfolio': {
-    view: 'portfolio'
+    view: 'portfolio',
+    locals: {
+      metaTitle: "Triangle Blog | Portfolio",
+      metaDescription: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem"
+    }
   },
   '/portfolio/:id': {
     view: 'portfolio'
   },
 
   '/register': {
-    view: 'register'
+    view: 'register',
+    locals: {
+      metaTitle: "Register",
+      metaDescription: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem"
+    }
   },
   '/login': {
-    view: 'login'
+    view: 'login',
+    locals: {
+      metaTitle: "Login",
+      metaDescription: "Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem"
+    }
   },
 
   
