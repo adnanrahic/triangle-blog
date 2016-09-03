@@ -271,8 +271,10 @@
     <script type="text/javascript">
 
         var app = angular.module('app',[]);
-        var root = 'http://localhost:1337/'; 
-        var api = 'http://localhost:1337/api';
+        // var root = 'http://localhost:1337/'; 
+        // var api = 'http://localhost:1337/api';
+        const root = 'https://triangle-blog.herokuapp.com/';
+        const api = 'https://triangle-blog.herokuapp.com/api';
 
         app.controller('registerController', ['$scope', '$http', function($scope, $http){
 
@@ -333,12 +335,12 @@
             });
 
             // get the logged user
-            $http.get('/api/session').then(function(res) {
+            $http.get(api + '/session').then(function(res) {
                 $scope.user = res.data.User;
             });
 
             // getting done on backend
-            io.socket.get('/api/forum/initForum');
+            io.socket.get(api + '/forum/initForum');
             io.socket.on('getForum', function(forum){
                 $scope.forum = forum;
                 console.log(forum);
@@ -362,7 +364,7 @@
 
                         if(entry.user.id == obj.id) {
                             entry.user.online = obj.online;
-                            io.socket.put('/api/forum/putForumEntry/' + entry.id, entry, function(res) {
+                            io.socket.put(api + '/forum/putForumEntry/' + entry.id, entry, function(res) {
                                 console.log(res);
                             });
                         }
@@ -398,7 +400,7 @@
             // });
 
             $scope.sendMsg = function(){
-                io.socket.post('/api/forum/postToForum',{user:$scope.user,message: $scope.message});
+                io.socket.post(api + '/forum/postToForum',{user:$scope.user,message: $scope.message});
                 $scope.message = "";
             };
 
@@ -417,7 +419,7 @@
             });
 
             $scope.blog = {};
-            io.socket.get('/api/blog/initBlog/' + $scope.id);
+            io.socket.get(api + '/blog/initBlog/' + $scope.id);
             io.socket.on('getBlogById', function(blog){
                 $scope.blog = blog;
                 console.log(blog);
